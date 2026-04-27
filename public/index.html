@@ -1695,7 +1695,136 @@ body {
   border-left-width: 4px;
   background: rgba(184, 54, 46, 0.025);
 }
-</style>
+
+/* ============ NEW: SPECIAL THANKS / CONTRIBUTORS ============ */
+.thanks {
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px dashed var(--ink-faded);
+  position: relative;
+}
+.thanks .thanks-hdr {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.thanks .thanks-title {
+  font-family: var(--headline);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+.thanks .thanks-title em {
+  color: var(--accent-red);
+  font-style: italic;
+}
+.thanks .thanks-blurb {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ink-faded);
+  max-width: 420px;
+  line-height: 1.55;
+  margin: 0;
+}
+.thanks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.thanks-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 252, 244, 0.55);
+  border: 1px dashed var(--ink-faded);
+  align-items: start;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.15s;
+  position: relative;
+}
+.thanks-card:hover {
+  background: rgba(255, 252, 244, 0.9);
+  border-style: solid;
+  border-color: var(--ink);
+  transform: translate(-1px, -1px);
+}
+.thanks-card .avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--paper-deep);
+  border: 1.5px solid var(--ink);
+  object-fit: cover;
+  display: block;
+  box-shadow: 1.5px 1.5px 0 var(--ink);
+}
+.thanks-card .avatar.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--headline);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink-faded);
+}
+.thanks-card .meta { min-width: 0; }
+.thanks-card .name {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.thanks-card .handle {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--ink-faded);
+  margin-bottom: 6px;
+}
+.thanks-card .handle .platform {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  padding: 0 5px;
+  margin-right: 5px;
+  color: var(--ink-soft);
+  vertical-align: 1px;
+}
+.thanks-card .filter {
+  font-family: var(--hand);
+  font-size: 14.5px;
+  line-height: 1.35;
+  color: var(--ink);
+  position: relative;
+  padding-left: 14px;
+}
+.thanks-card .filter::before {
+  content: "“";
+  position: absolute;
+  left: -2px; top: -6px;
+  font-family: var(--headline);
+  font-style: italic;
+  font-size: 24px;
+  color: var(--accent-red);
+  line-height: 1;
+}
+
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">

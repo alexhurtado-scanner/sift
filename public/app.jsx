@@ -23,6 +23,36 @@ const EXAMPLES = [
   },
 ];
 
+// Practitioners who lent us their AI-slop red flags.
+// Swap `avatar` for a real headshot / GH avatar URL, and `href` for the
+// project / LinkedIn link. Use `platform: "GH"` or `"LI"`.
+const CONTRIBUTORS = [
+  {
+    name: "TODO — credit me",
+    handle: "@yourhandle",
+    platform: "LI",
+    href: "https://www.linkedin.com/in/yourhandle",
+    avatar: null, // e.g. "https://github.com/yourhandle.png"
+    filter: "Intel coming out of Panther is flop.",
+  },
+  {
+    name: "TODO — practitioner",
+    handle: "@yourhandle",
+    platform: "GH",
+    href: "https://github.com/yourhandle",
+    avatar: null,
+    filter: "If the IOCs are all formatted as bullet points and nothing else, walk away.",
+  },
+  {
+    name: "TODO — practitioner",
+    handle: "@yourhandle",
+    platform: "GH",
+    href: "https://github.com/yourhandle",
+    avatar: null,
+    filter: "No timestamps, no telemetry, no thanks.",
+  },
+];
+
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "headlineFont": "serif",
   "palette": "dispatch",
@@ -199,7 +229,7 @@ function Hero({ onSubmit, url, setUrl, inputRef, examples, useExample }) {
     <section className="hero">
       <h1 className="editorial">
         Paste a security URL.<br/>
-        Get a <span className="underline"><em>verdict</em></span> on whether it's worth your afternoon.
+        Get a <span className="underline"><em>verdict</em></span> on whether it's worth your tokens.
       </h1>
       <p className="lede">
         Fifteen tabs open before your first coffee, three of them likely AI-generated, and you can't tell which without ten minutes per artifact. Sift reads it for you and stamps SHIP, SKIM, or SKIP. If it ships, you walk away with the Sigma rule, the telemetry you'll need, and a translation for whatever your SIEM happens to be this fiscal year.
@@ -358,11 +388,53 @@ function Footer() {
   return (
     <>
       <DispatchBar />
+      <Thanks />
       <div className="footer">
         <div className="credit">An <em>editorial</em> companion to Detection Dispatch · alex's version</div>
         <div>sift.dev · v0.2 · the verdict is yours</div>
       </div>
     </>
+  );
+}
+
+function Thanks() {
+  if (!CONTRIBUTORS || CONTRIBUTORS.length === 0) return null;
+  return (
+    <section className="thanks">
+      <div className="thanks-hdr">
+        <h3 className="thanks-title">Special thanks to the practitioners who lent us their <em>filter</em>.</h3>
+        <p className="thanks-blurb">
+          Their pattern-matching, our scorecard. The red flags below taught Sift what AI slop smells like.
+        </p>
+      </div>
+      <div className="thanks-grid">
+        {CONTRIBUTORS.map((c, i) => (
+          <a
+            key={i}
+            className="thanks-card"
+            href={c.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {c.avatar ? (
+              <img className="avatar" src={c.avatar} alt={c.name} loading="lazy" />
+            ) : (
+              <span className="avatar placeholder" aria-hidden="true">
+                {(c.name || "?").trim().charAt(0).toUpperCase()}
+              </span>
+            )}
+            <div className="meta">
+              <div className="name">{c.name}</div>
+              <div className="handle">
+                <span className="platform">{c.platform}</span>
+                {c.handle}
+              </div>
+              <div className="filter">{c.filter}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
   );
 }
 
