@@ -199,7 +199,7 @@ function Hero({ onSubmit, url, setUrl, inputRef, examples, useExample }) {
     <section className="hero">
       <h1 className="editorial">
         Paste a security URL.<br/>
-        Get a <span className="underline"><em>verdict</em></span> on whether it's worth your afternoon.
+        Get a <span className="underline"><em>verdict</em></span> on whether it's worth your tokens.
       </h1>
       <p className="lede">
         Fifteen tabs open before your first coffee, three of them likely AI-generated, and you can't tell which without ten minutes per artifact. Sift reads it for you and stamps SHIP, SKIM, or SKIP. If it ships, you walk away with the Sigma rule, the telemetry you'll need, and a translation for whatever your SIEM happens to be this fiscal year.
