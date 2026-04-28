@@ -67,12 +67,12 @@ function Stamp({ verdict }) {
 
 function FetchingState({ url }) {
   const lines = [
-    { delay: 0, html: '<span class="c">// sift v0.2 — verdict engine</span>' },
-    { delay: 120, html: `<span class="k">$</span> fetch <span class="s">"${url}"</span>` },
-    { delay: 380, html: '<span class="c">  → reading content...</span>' },
-    { delay: 720, html: '<span class="c">  → applying rubric...</span>' },
-    { delay: 1100, html: '<span class="c">  → checking for Sigma-shaped artifacts...</span>' },
-    { delay: 1500, html: '<span class="c">  → scoring confidence...</span>' },
+    { delay: 0,    node: <span className="c">{"// sift v0.2 — verdict engine"}</span> },
+    { delay: 120,  node: <><span className="k">$</span>{" fetch "}<span className="s">"{url}"</span></> },
+    { delay: 380,  node: <span className="c">{"  → reading content..."}</span> },
+    { delay: 720,  node: <span className="c">{"  → applying rubric..."}</span> },
+    { delay: 1100, node: <span className="c">{"  → checking for Sigma-shaped artifacts..."}</span> },
+    { delay: 1500, node: <span className="c">{"  → scoring confidence..."}</span> },
   ];
   const [shown, setShown] = useState(0);
   useEffect(() => {
@@ -86,7 +86,7 @@ function FetchingState({ url }) {
       <div className="scan" />
       <div className="lines">
         {lines.slice(0, shown).map((l, i) => (
-          <span key={i} className="ln" dangerouslySetInnerHTML={{ __html: l.html }} />
+          <span key={i} className="ln">{l.node}</span>
         ))}
       </div>
     </div>
